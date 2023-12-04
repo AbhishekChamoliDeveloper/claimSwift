@@ -1,0 +1,278 @@
+<div class="flex h-screen">
+  <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
+    <div class="mx-auto">
+      <a
+        routerLink="/dashboard/purchased-policies"
+        class="text-pink-500 text-lg mb-4 block"
+        >Back</a
+      >
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 class="text-4xl font-bold mb-4 text-pink-600">
+          {{ selectedPolicy.coverage_type }}
+        </h2>
+        <p class="text-gray-600 mb-4 text-3xl">
+          {{ selectedPolicy.information }}
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span
+            *ngFor="let benefit of selectedPolicy.benefits"
+            class="bg-pink-500 text-white px-2 py-1 rounded"
+            >{{ benefit }}</span
+          >
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-2xl mt-5">
+          <div>
+            <strong class="text-pink-600">Deductible:</strong>
+            <p class="text-gray-600">{{ selectedPolicy.deductible }}</p>
+          </div>
+          <div>
+            <strong class="text-pink-600">Premium:</strong>
+            <p class="text-gray-600">{{ selectedPolicy.premium }}/Month</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insurance Claim Form -->
+      <form class="flex-grow">
+        <!-- Personal Information -->
+        <div class="mb-4">
+          <label for="fullName" class="block text-sm font-medium text-gray-700"
+            >Full Name</label
+          >
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email Address</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="phone" class="block text-sm font-medium text-gray-700"
+            >Phone Number</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="e.g., (555) 555-5555"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="address" class="block text-sm font-medium text-gray-700"
+            >Address</label
+          >
+          <textarea
+            id="address"
+            name="address"
+            class="mt-1 p-2 w-full border rounded-md"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label for="dob" class="block text-sm font-medium text-gray-700"
+            >Date of Birth</label
+          >
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <!-- Policy Information -->
+        <div class="mb-4">
+          <label
+            for="policyNumber"
+            class="block text-sm font-medium text-gray-700"
+            >Policy Number</label
+          >
+          <input
+            type="text"
+            id="policyNumber"
+            name="policyNumber"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <!-- Incident/Claim Details -->
+        <div class="mb-4">
+          <label
+            for="incidentDateTime"
+            class="block text-sm font-medium text-gray-700"
+            >Date and Time of the Incident</label
+          >
+          <input
+            type="datetime-local"
+            id="incidentDateTime"
+            name="incidentDateTime"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="incidentDescription"
+            class="block text-sm font-medium text-gray-700"
+            >Description of the Incident</label
+          >
+          <textarea
+            id="incidentDescription"
+            name="incidentDescription"
+            class="mt-1 p-2 w-full border rounded-md"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="incidentLocation"
+            class="block text-sm font-medium text-gray-700"
+            >Location of the Incident</label
+          >
+          <input
+            type="text"
+            id="incidentLocation"
+            name="incidentLocation"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <!-- Additional Information -->
+        <div class="mb-4">
+          <label
+            for="policeReportNumber"
+            class="block text-sm font-medium text-gray-700"
+            >Police Report Number (if applicable)</label
+          >
+          <input
+            type="text"
+            id="policeReportNumber"
+            name="policeReportNumber"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="witnessInformation"
+            class="block text-sm font-medium text-gray-700"
+            >Witness Information (if applicable)</label
+          >
+          <textarea
+            id="witnessInformation"
+            name="witnessInformation"
+            class="mt-1 p-2 w-full border rounded-md"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="otherPartyInformation"
+            class="block text-sm font-medium text-gray-700"
+            >Other Party Involved Information (if applicable)</label
+          >
+          <textarea
+            id="otherPartyInformation"
+            name="otherPartyInformation"
+            class="mt-1 p-2 w-full border rounded-md"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Documentation -->
+        <div class="mb-4">
+          <label
+            for="photosVideos"
+            class="block text-sm font-medium text-gray-700"
+            >Photos or Videos of the Incident</label
+          >
+          <input
+            type="file"
+            id="photosVideos"
+            name="photosVideos"
+            class="mt-1"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="supportingDocuments"
+            class="block text-sm font-medium text-gray-700"
+            >Supporting Documents (medical reports, repair estimates,
+            etc.)</label
+          >
+          <input
+            type="file"
+            id="supportingDocuments"
+            name="supportingDocuments"
+            class="mt-1"
+          />
+        </div>
+
+        <!-- Financial Information -->
+        <div class="mb-4">
+          <label
+            for="bankAccountDetails"
+            class="block text-sm font-medium text-gray-700"
+            >Bank Account Details for Claim Payment (if applicable)</label
+          >
+          <input
+            type="text"
+            id="bankAccountDetails"
+            name="bankAccountDetails"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <!-- Signature -->
+        <div class="mb-4">
+          <label
+            for="claimantSignature"
+            class="block text-sm font-medium text-gray-700"
+            >Signature of the Claimant</label
+          >
+          <input
+            type="text"
+            id="claimantSignature"
+            name="claimantSignature"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="bg-pink-600 text-white p-2 rounded-md">
+          Submit Claim
+        </button>
+      </form>
+    </div>
+  </main>
+</div>

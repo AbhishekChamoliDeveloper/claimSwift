@@ -9,6 +9,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserAvailablePoliciesComponent } from './user-available-policies/user-available-policies.component';
 import { PolicyPurchaseComponent } from './policy-purchase/policy-purchase.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PurchasedPoliciesComponent } from './purchased-policies/purchased-policies.component';
+import { ClaimPolicyComponent } from './claim-policy/claim-policy.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   { path: '', component: UserLoginComponent },
@@ -24,6 +27,18 @@ const routes: Routes = [
     component: PolicyPurchaseComponent,
   },
   { path: 'dashboard/settings', component: SettingsComponent },
+  {
+    path: 'dashboard/purchased-policies',
+    component: PurchasedPoliciesComponent,
+  },
+  {
+    path: 'claim-policy/:id',
+    component: ClaimPolicyComponent,
+  },
+  {
+    path: 'dashboard/notifications',
+    component: NotificationsComponent,
+  },
 ];
 
 @NgModule({

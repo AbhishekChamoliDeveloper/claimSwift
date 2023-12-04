@@ -13,6 +13,10 @@ import { UserAvailablePoliciesComponent } from './user-available-policies/user-a
 import { SinglePolicyCardComponent } from './single-policy-card/single-policy-card.component';
 import { PolicyPurchaseComponent } from './policy-purchase/policy-purchase.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PurchasedPoliciesComponent } from './purchased-policies/purchased-policies.component';
+import { SinglePolicyPurchasedCardComponent } from './single-policy-purchased-card/single-policy-purchased-card.component';
+import { ClaimPolicyComponent } from './claim-policy/claim-policy.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { SettingsComponent } from './settings/settings.component';
     SinglePolicyCardComponent,
     PolicyPurchaseComponent,
     SettingsComponent,
+    PurchasedPoliciesComponent,
+    SinglePolicyPurchasedCardComponent,
+    ClaimPolicyComponent,
+    NotificationsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
