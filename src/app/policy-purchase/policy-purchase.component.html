@@ -1,0 +1,222 @@
+<div class="flex h-screen">
+  <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
+    <div class="mx-auto">
+      <a
+        routerLink="/dashboard/available-policies"
+        class="text-pink-500 text-lg mb-4 block"
+        >Back</a
+      >
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 class="text-4xl font-bold mb-4 text-pink-600">
+          {{ selectedPolicy.coverage_type }}
+        </h2>
+        <p class="text-gray-600 mb-4 text-3xl">
+          {{ selectedPolicy.information }}
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span
+            *ngFor="let benefit of selectedPolicy.benefits"
+            class="bg-pink-500 text-white px-2 py-1 rounded"
+            >{{ benefit }}</span
+          >
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-2xl mt-5">
+          <div>
+            <strong class="text-pink-600">Deductible:</strong>
+            <p class="text-gray-600">{{ selectedPolicy.deductible }}</p>
+          </div>
+          <div>
+            <strong class="text-pink-600">Premium:</strong>
+            <p class="text-gray-600">{{ selectedPolicy.premium }}/Month</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Insurance Purchase Form -->
+      <form class="flex-grow">
+        <!-- Personal Information -->
+        <div class="mb-4">
+          <label for="fullName" class="block text-sm font-medium text-gray-700"
+            >Full Name</label
+          >
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email Address</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="phone" class="block text-sm font-medium text-gray-700"
+            >Phone Number</label
+          >
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="e.g., (555) 555-5555"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="address" class="block text-sm font-medium text-gray-700"
+            >Address</label
+          >
+          <textarea
+            id="address"
+            name="address"
+            class="mt-1 p-2 w-full border rounded-md"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label for="dob" class="block text-sm font-medium text-gray-700"
+            >Date of Birth</label
+          >
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <!-- Additional Information -->
+        <div class="mb-4">
+          <label for="ssn" class="block text-sm font-medium text-gray-700"
+            >Social Security Number</label
+          >
+          <input
+            type="text"
+            id="ssn"
+            name="ssn"
+            class="mt-1 p-2 w-full border rounded-md"
+            placeholder="XXX-XX-XXXX"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label for="gender" class="block text-sm font-medium text-gray-700"
+            >Gender</label
+          >
+          <select
+            id="gender"
+            name="gender"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="maritalStatus"
+            class="block text-sm font-medium text-gray-700"
+            >Marital Status</label
+          >
+          <select
+            id="maritalStatus"
+            name="maritalStatus"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          >
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="occupation"
+            class="block text-sm font-medium text-gray-700"
+            >Occupation</label
+          >
+          <input
+            type="text"
+            id="occupation"
+            name="occupation"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="annualIncome"
+            class="block text-sm font-medium text-gray-700"
+            >Annual Income</label
+          >
+          <input
+            type="number"
+            id="annualIncome"
+            name="annualIncome"
+            class="mt-1 p-2 w-full border rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mb-4">
+          <label
+            for="healthConditions"
+            class="block text-sm font-medium text-gray-700"
+            >Health Conditions</label
+          >
+          <input
+            type="text"
+            id="healthConditions"
+            name="healthConditions"
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+
+        <!-- Document Upload -->
+        <div class="mb-4">
+          <label
+            for="documentUpload"
+            class="block text-sm font-medium text-gray-700"
+            >Document Upload</label
+          >
+          <input
+            type="file"
+            id="documentUpload"
+            name="documentUpload"
+            class="mt-1"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="bg-pink-600 text-white p-2 rounded-md">
+          Purchase Policy
+        </button>
+      </form>
+    </div>
+  </main>
+</div>

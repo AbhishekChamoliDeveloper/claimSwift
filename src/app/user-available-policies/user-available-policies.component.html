@@ -1,0 +1,12 @@
+<div class="flex h-screen">
+  <app-user-sidebar></app-user-sidebar>
+
+  <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
+    <div class="grid grid-cols-3 gap-8">
+      <app-single-policy-card
+        *ngFor="let policy of healthInsuranceData"
+        [policy]="policy"
+      ></app-single-policy-card>
+    </div>
+  </main>
+</div>

@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
+import { UserAvailablePoliciesComponent } from './user-available-policies/user-available-policies.component';
+import { SinglePolicyCardComponent } from './single-policy-card/single-policy-card.component';
+import { PolicyPurchaseComponent } from './policy-purchase/policy-purchase.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
     UserSignupComponent,
     DashboardComponent,
     UserSidebarComponent,
+    UserAvailablePoliciesComponent,
+    SinglePolicyCardComponent,
+    PolicyPurchaseComponent,
+    SettingsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
