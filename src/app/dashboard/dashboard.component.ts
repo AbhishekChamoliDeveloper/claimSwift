@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
-  userEmail: string = 'John.doe@example.com';
+  userEmail: string = 'palakkhurana40@gmail.com';
 }
