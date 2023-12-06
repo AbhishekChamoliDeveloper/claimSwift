@@ -87,9 +87,83 @@
           <p class="text-xl">Users List</p>
         </a>
       </li>
+
+      <li>
+        <a
+          routerLink="/dashboard/admin/approved-policies"
+          routerLinkActive="bg-pink-800"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link flex items-center space-x-3 py-2 px-4 text-white hover:bg-pink-800 hover:text-white rounded-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"
+            />
+          </svg>
+
+          <p class="text-xl">Approved Policies</p>
+        </a>
+      </li>
+
+      <li>
+        <a
+          routerLink="/dashboard/admin/rejected-policies"
+          routerLinkActive="bg-pink-800"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link flex items-center space-x-3 py-2 px-4 text-white hover:bg-pink-800 hover:text-white rounded-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+            />
+          </svg>
+
+          <p class="text-xl">Rejected Policies</p>
+        </a>
+      </li>
     </ul>
 
     <!-- Horizontal Line -->
     <hr class="border-t border-pink-800 my-4" />
+
+    <button
+      (click)="logout()"
+      class="absolute bottom-2 flex items-center space-x-3 py-2 px-4 text-white left-2 hover:text-white rounded-lg"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+        />
+      </svg>
+
+      <p class="text-lg">Logout</p>
+    </button>
   </div>
 </div>

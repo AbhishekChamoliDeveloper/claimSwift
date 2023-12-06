@@ -21,6 +21,10 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { ClaimReviewComponent } from './claim-review/claim-review.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { AdminApprovedPoliciesComponent } from './admin-approved-policies/admin-approved-policies.component';
+import { AdminRejectedPoliciesComponent } from './admin-rejected-policies/admin-rejected-policies.component';
+import { TakeClaimActionComponent } from './take-claim-action/take-claim-action.component';
+import { StarRatingPopupComponent } from './star-rating-popup/star-rating-popup.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { UsersListComponent } from './users-list/users-list.component';
     AdminSidebarComponent,
     ClaimReviewComponent,
     UsersListComponent,
+    AdminApprovedPoliciesComponent,
+    AdminRejectedPoliciesComponent,
+    TakeClaimActionComponent,
+    StarRatingPopupComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

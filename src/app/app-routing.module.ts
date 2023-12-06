@@ -15,6 +15,9 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ClaimReviewComponent } from './claim-review/claim-review.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { AdminApprovedPoliciesComponent } from './admin-approved-policies/admin-approved-policies.component';
+import { AdminRejectedPoliciesComponent } from './admin-rejected-policies/admin-rejected-policies.component';
+import { TakeClaimActionComponent } from './take-claim-action/take-claim-action.component';
 
 const routes: Routes = [
   { path: '', component: UserLoginComponent },
@@ -53,6 +56,18 @@ const routes: Routes = [
   {
     path: 'dashboard/admin/users-list',
     component: UsersListComponent,
+  },
+  {
+    path: 'dashboard/admin/approved-policies',
+    component: AdminApprovedPoliciesComponent,
+  },
+  {
+    path: 'dashboard/admin/rejected-policies',
+    component: AdminRejectedPoliciesComponent,
+  },
+  {
+    path: 'dashboard/admin/claim-review/:userId/:policyNumber',
+    component: TakeClaimActionComponent,
   },
 ];
 
