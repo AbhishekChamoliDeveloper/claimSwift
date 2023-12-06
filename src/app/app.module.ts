@@ -17,6 +17,10 @@ import { PurchasedPoliciesComponent } from './purchased-policies/purchased-polic
 import { SinglePolicyPurchasedCardComponent } from './single-policy-purchased-card/single-policy-purchased-card.component';
 import { ClaimPolicyComponent } from './claim-policy/claim-policy.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { ClaimReviewComponent } from './claim-review/claim-review.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
     SinglePolicyPurchasedCardComponent,
     ClaimPolicyComponent,
     NotificationsComponent,
+    AdminDashboardComponent,
+    AdminSidebarComponent,
+    ClaimReviewComponent,
+    UsersListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

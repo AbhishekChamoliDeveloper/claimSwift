@@ -1,0 +1,41 @@
+<div class="flex h-screen">
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
+    <!-- Search Input -->
+    <div class="mb-6">
+      <input
+        type="text"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        placeholder="Search Policies"
+      />
+    </div>
+
+    <!-- Flatlist of Submitted Policies -->
+    <div
+      *ngFor="let policy of submittedPolicies"
+      class="mb-4 p-4 border rounded-md bg-white shadow-md"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-semibold mb-2">{{ policy.policyName }}</h2>
+          <p class="text-gray-600 mb-2">
+            Policy Number: {{ policy.policyNumber }}
+          </p>
+          <p class="text-gray-600 mb-2">
+            Submission Date: {{ policy.submissionDate | date }}
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-600 mb-2">Submitted By: {{ policy.fullName }}</p>
+          <p class="text-gray-600">User ID: {{ policy.userId }}</p>
+        </div>
+      </div>
+      <button
+        class="bg-rose-900 text-white px-4 py-2 rounded-md hover:bg-rose-700 focus:outline-none"
+      >
+        Take Action
+      </button>
+    </div>
+  </main>
+</div>

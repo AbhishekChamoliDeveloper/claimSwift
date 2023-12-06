@@ -12,6 +12,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { PurchasedPoliciesComponent } from './purchased-policies/purchased-policies.component';
 import { ClaimPolicyComponent } from './claim-policy/claim-policy.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ClaimReviewComponent } from './claim-review/claim-review.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   { path: '', component: UserLoginComponent },
@@ -38,6 +41,18 @@ const routes: Routes = [
   {
     path: 'dashboard/notifications',
     component: NotificationsComponent,
+  },
+  {
+    path: 'dashboard/admin',
+    component: AdminDashboardComponent,
+  },
+  {
+    path: 'dashboard/admin/claim-review',
+    component: ClaimReviewComponent,
+  },
+  {
+    path: 'dashboard/admin/users-list',
+    component: UsersListComponent,
   },
 ];
 

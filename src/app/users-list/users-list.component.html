@@ -1,0 +1,54 @@
+<div class="flex h-screen">
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
+    <!-- Search Input for Users -->
+    <div class="mb-6">
+      <input
+        type="text"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+        placeholder="Search Users"
+      />
+    </div>
+
+    <!-- Flatlist of Users -->
+    <div
+      *ngFor="let user of users"
+      class="mb-4 p-4 border rounded-md bg-white shadow-md"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <img
+            src="{{ user.photoUrl }}"
+            alt="{{ user.fullName }}"
+            class="w-16 h-16 rounded-full mr-4"
+          />
+          <div>
+            <h2 class="text-xl font-semibold mb-2">
+              <strong>{{ user.fullName }}</strong>
+            </h2>
+            <p class="text-gray-600 mb-2">User ID: {{ user.userId }}</p>
+            <p class="text-gray-600 mb-2">Email: {{ user.email }}</p>
+            <p class="text-gray-600 mb-2">
+              Phone Number: {{ user.phoneNumber }}
+            </p>
+            <p class="text-gray-600 mb-2">
+              Date of Joining: {{ user.dateOfJoining | date }}
+            </p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="text-gray-600 mb-2">
+            Policies Bought: {{ user.policiesBought }}
+          </p>
+          <p class="text-gray-600 mb-2">
+            Policies Claimed: {{ user.policiesClaimed }}
+          </p>
+          <p class="text-gray-600 mb-2">
+            Policies Rejected: {{ user.policiesRejected }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
