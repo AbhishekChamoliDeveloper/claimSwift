@@ -1,1 +1,65 @@
-<div class="w-full h-screen absolute inset-0 bg-black opacity-5"></div>
+<!-- star-rating-popup.component.html -->
+
+<div
+  class="flex items-center justify-center w-full h-screen absolute inset-0"
+  *ngIf="showFeedBackForm"
+>
+  <div class="relative bg-white p-8 rounded-lg shadow-2xl w-96">
+    <h2 class="text-2xl font-semibold mb-4">Feedback Form</h2>
+
+    <form (submit)="onSubmit($event)">
+      <div class="mb-4">
+        <label for="comments" class="block text-sm font-medium text-gray-600"
+          >Comments:</label
+        >
+        <textarea
+          id="comments"
+          name="comments"
+          rows="4"
+          class="mt-1 p-2 w-full border rounded-md"
+          placeholder="Enter your feedback here..."
+        ></textarea>
+      </div>
+
+      <!-- Star Rating -->
+      <div class="mb-4 flex items-center justify-center space-x-3">
+        <svg
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-8 h-8 text-yellow-500 cursor-pointer"
+          (click)="setRating(star)"
+          [ngClass]="{ 'text-gray-400': rating !== null && star > rating }"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 focus:outline-none focus:ring focus:border-pink-300"
+      >
+        Submit Feedback
+      </button>
+    </form>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="absolute top-3 right-3 w-6 h-6 cursor-pointer hover:text-pink-500"
+      (click)="closeFeedBackForm()"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </div>
+</div>

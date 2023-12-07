@@ -1,26 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-star-rating-popup',
   templateUrl: './star-rating-popup.component.html',
 })
-export class StarRatingPopupComponent {
-  @Input() rating: number; // You can pass the initial rating from the parent component
+export class StarRatingPopupComponent implements OnInit {
+  rating: number;
+  showFeedBackForm: boolean = false;
 
-  stars: number[] = [1, 2, 3, 4, 5];
-  hoveredIndex: number | null = null;
-  selectedIndex: number | null = null;
-
-  onMouseEnter(index: number): void {
-    this.hoveredIndex = index;
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.showFeedBackForm = true;
+    }, Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000);
   }
 
-  onMouseLeave(): void {
-    this.hoveredIndex = null;
+  closeFeedBackForm(): void {
+    this.showFeedBackForm = false;
   }
 
-  onClick(index: number): void {
-    this.selectedIndex = index;
-    // You can emit an event here to notify the parent component about the selected rating
+  setRating(rating: number): void {
+    this.rating = rating;
+  }
+
+  onSubmit(e: Event): void {
+    e.preventDefault();
+
+    this.showFeedBackForm = false;
   }
 }
