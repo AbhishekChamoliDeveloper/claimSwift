@@ -34,7 +34,7 @@
       </div>
 
       <!-- Insurance Purchase Form -->
-      <form class="flex-grow">
+      <form class="flex-grow" (submit)="onSubmit($event)">
         <!-- Personal Information -->
         <div class="mb-4">
           <label for="fullName" class="block text-sm font-medium text-gray-700"
@@ -46,6 +46,7 @@
             name="fullName"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.fullName"
           />
         </div>
 
@@ -59,6 +60,7 @@
             name="email"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.email"
           />
         </div>
 
@@ -73,6 +75,7 @@
             class="mt-1 p-2 w-full border rounded-md"
             placeholder="e.g., (555) 555-5555"
             required
+            [(ngModel)]="formData.phoneNumber"
           />
         </div>
 
@@ -86,6 +89,7 @@
             class="mt-1 p-2 w-full border rounded-md"
             rows="3"
             required
+            [(ngModel)]="formData.address"
           ></textarea>
         </div>
 
@@ -99,6 +103,7 @@
             name="dob"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.dateOfBirth"
           />
         </div>
 
@@ -114,6 +119,7 @@
             class="mt-1 p-2 w-full border rounded-md"
             placeholder="XXX-XX-XXXX"
             required
+            [(ngModel)]="formData.socialSecurityNumber"
           />
         </div>
 
@@ -126,10 +132,11 @@
             name="gender"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.gender"
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
           </select>
         </div>
 
@@ -144,11 +151,12 @@
             name="maritalStatus"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.maritalStatus"
           >
-            <option value="single">Single</option>
-            <option value="married">Married</option>
-            <option value="divorced">Divorced</option>
-            <option value="widowed">Widowed</option>
+            <option value="single">single</option>
+            <option value="married">married</option>
+            <option value="divorced">divorced</option>
+            <option value="widowed">widowed</option>
           </select>
         </div>
 
@@ -164,6 +172,7 @@
             name="occupation"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.occupation"
           />
         </div>
 
@@ -179,6 +188,7 @@
             name="annualIncome"
             class="mt-1 p-2 w-full border rounded-md"
             required
+            [(ngModel)]="formData.annualIncome"
           />
         </div>
 
@@ -193,6 +203,7 @@
             id="healthConditions"
             name="healthConditions"
             class="mt-1 p-2 w-full border rounded-md"
+            [(ngModel)]="formData.healthCondition"
           />
         </div>
 
@@ -209,6 +220,7 @@
             name="documentUpload"
             class="mt-1"
             required
+            (change)="uploadDocument($event)"
           />
         </div>
 

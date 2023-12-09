@@ -29,7 +29,7 @@ const routes: Routes = [
     component: UserAvailablePoliciesComponent,
   },
   {
-    path: 'buy-policy/:id',
+    path: 'buy-policy/:policyId',
     component: PolicyPurchaseComponent,
   },
   { path: 'dashboard/settings', component: SettingsComponent },

@@ -33,7 +33,7 @@
 
   <!-- Add Buy Now Button with effects -->
   <a
-    routerLink="/buy-policy/1234"
+    [routerLink]="'/buy-policy/' + policy._id"
     class="absolute bottom-0 text-center right-0 bg-pink-900 text-white px-4 py-2 rounded-b-xl w-full hover:bg-pink-700"
   >
     Buy Now

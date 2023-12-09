@@ -1,7 +1,7 @@
-// user-signup.component.ts
-
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-signup',
@@ -16,9 +16,30 @@ export class UserSignupComponent {
   };
 
   passwordVisible = false;
+  isSigningUp = false;
+
+  constructor(
+    private httpClient: HttpClient,
+    private cookieService: CookieService,
+    private router: Router
+  ) {}
 
   onSubmit() {
-    console.log('Form submitted', this.user);
+    this.isSigningUp = true;
+    this.httpClient
+      .post('http://localhost:3000/user/signup', this.user)
+      .subscribe(
+        (response: any) => {
+          const token = response.token;
+          this.cookieService.set('authToken', token);
+          this.router.navigate(['/dashboard']);
+        },
+        (error) => {
+          this.isSigningUp = false;
+          console.log(error.error);
+          alert(error.message);
+        }
+      );
   }
 
   togglePasswordVisibility() {
