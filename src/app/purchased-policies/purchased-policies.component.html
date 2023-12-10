@@ -10,10 +10,13 @@
       />
     </div>
     <div class="grid grid-cols-3 gap-8">
-      <app-single-policy-purchased-card
-        *ngFor="let policy of healthInsuranceData"
-        [policy]="policy"
-      ></app-single-policy-purchased-card>
+      <ng-container
+        *ngFor="let policy of healthInsuranceData.slice().reverse()"
+      >
+        <app-single-policy-purchased-card
+          [policy]="policy.policyId"
+        ></app-single-policy-purchased-card>
+      </ng-container>
     </div>
   </main>
 </div>

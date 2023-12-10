@@ -112,7 +112,7 @@
 
         <span
           class="absolute -top-1 left-3 rounded-full h-6 w-6 text-pink-800 bg-white text-center font-semibold"
-          >3</span
+          >{{ notificationCount }}</span
         >
       </li>
 
@@ -156,11 +156,13 @@
       class="absolute bottom-14 flex items-center justify-center space-x-4 mt-4"
     >
       <img
-        src="https://media.licdn.com/dms/image/C4E03AQGx3lUk_NsLBg/profile-displayphoto-shrink_200_200/0/1637922686282?e=2147483647&v=beta&t=7he4IKKjRHtSnKkKHs23Hdn5p_WtPLDPjcnU30QxDgk"
+        src="{{ userData?.profile_picture }}"
         alt="User Photo"
         class="w-12 h-12 rounded-full border-4 border-pink-800"
       />
-      <p class="text-white text-lg">Palak Khurana</p>
+      <p class="text-white text-lg">
+        {{ userData?.firstName }} {{ userData?.lastName }}
+      </p>
     </div>
 
     <button

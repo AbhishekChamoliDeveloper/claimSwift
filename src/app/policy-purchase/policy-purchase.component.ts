@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-policy-purchase',
@@ -10,7 +12,13 @@ export class PolicyPurchaseComponent implements OnInit {
   selectedPolicy: any;
   formData: any = {};
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private router: Router,
+    private toastService: ToastrService
+  ) {}
 
   ngOnInit() {
     const policyId = this.route.snapshot.paramMap.get('policyId');
@@ -48,8 +56,30 @@ export class PolicyPurchaseComponent implements OnInit {
   }
 
   onSubmit(e: Event) {
-    this.formData.policyId = this.route.snapshot.paramMap.get('policyId');
+    const authToken = this.cookieService.get('authToken');
 
-    console.log(this.formData);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    });
+
+    this.http
+      .post(
+        `http://localhost:3000/user/buy-policy/${this.selectedPolicy._id}`,
+        this.formData,
+        { headers: headers }
+      )
+      .subscribe(
+        (response: any) => {
+          this.toastService.success(
+            `Congratulation, You bought policy number ${response.boughtPolicy.policyId}.`
+          );
+          this.router.navigate(['/dashboard/available-policies']);
+        },
+        (error) => {
+          console.log(error);
+          alert(error.error);
+        }
+      );
   }
 }

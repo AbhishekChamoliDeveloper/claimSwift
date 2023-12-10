@@ -1,42 +1,26 @@
-<!-- main.component.html -->
-
 <div class="flex h-screen">
-  <!-- User Sidebar -->
   <app-user-sidebar></app-user-sidebar>
 
-  <!-- Main Content -->
   <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
-    <!-- notifications.component.html -->
-
     <div class="space-y-4">
-      <!-- Notifications Heading -->
       <h2 class="text-2xl font-bold mb-4 text-pink-700">Notifications</h2>
 
-      <!-- Notification: Policy Purchased (Success) -->
-      <div class="bg-green-500 text-white p-4 rounded">
+      <div
+        *ngFor="let notification of notifications"
+        [ngClass]="{
+          'bg-green-500': notification.status === 'success',
+          'bg-red-500': notification.status === 'reject',
+          'bg-blue-500': notification.status === 'info',
+          'text-white': true,
+          'p-4': true,
+          rounded: true
+        }"
+      >
         <div class="font-semibold">
-          Policy #123 has been successfully purchased.
+          {{ notification.message }}
         </div>
-        <div class="text-sm">Dec 1, 2023 10:30 AM</div>
+        <div class="text-sm">{{ notification.createdAt }}</div>
       </div>
-
-      <!-- Notification: Claim Approved (Success) -->
-      <div class="bg-blue-500 text-white p-4 rounded">
-        <div class="font-semibold">
-          Your claim for Policy #456 has been approved.
-        </div>
-        <div class="text-sm">Dec 2, 2023 02:15 PM</div>
-      </div>
-
-      <!-- Notification: Claim Denied (Error) -->
-      <div class="bg-red-500 text-white p-4 rounded">
-        <div class="font-semibold">
-          Unfortunately, your claim for Policy #789 has been denied.
-        </div>
-        <div class="text-sm">Dec 3, 2023 09:45 AM</div>
-      </div>
-
-      <!-- Add more notification divs for additional notifications -->
     </div>
   </main>
 </div>
