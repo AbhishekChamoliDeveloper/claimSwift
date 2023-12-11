@@ -14,7 +14,7 @@
           class="bg-gradient-to-r from-pink-100 to-pink-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Policies to Take Action On</h2>
-          <p class="text-3xl font-bold">10</p>
+          <p class="text-3xl font-bold">{{ submittedPolicies.length }}</p>
           <!-- Replace with actual number -->
         </div>
 
@@ -23,7 +23,7 @@
           class="bg-gradient-to-r from-green-100 to-green-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Claimed Policies</h2>
-          <p class="text-3xl font-bold">25</p>
+          <p class="text-3xl font-bold">{{ claimedPolicies.length }}</p>
           <!-- Replace with actual number -->
         </div>
 
@@ -32,7 +32,7 @@
           class="bg-gradient-to-r from-red-100 to-red-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Rejected Policies</h2>
-          <p class="text-3xl font-bold">5</p>
+          <p class="text-3xl font-bold">{{ rejectedPolicies.length }}</p>
           <!-- Replace with actual number -->
         </div>
 
@@ -41,7 +41,7 @@
           class="bg-gradient-to-r from-blue-100 to-blue-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Approved Policies</h2>
-          <p class="text-3xl font-bold">15</p>
+          <p class="text-3xl font-bold">{{ approvedPolicies.length }}</p>
           <!-- Replace with actual number -->
         </div>
       </div>
@@ -55,33 +55,14 @@
       </div>
 
       <div class="grid grid-cols-2 gap-4 mt-5">
-        <!-- Users Bought Policies Section -->
-        <div
-          class="bg-gradient-to-r from-purple-100 to-purple-200 p-4 rounded shadow"
-        >
-          <h2 class="text-xl font-semibold mb-4">
-            Users Bought Policies (Monthly)
-          </h2>
-          <p class="text-3xl font-bold">20</p>
-        </div>
-
         <!-- Total Users Bought Policies Section -->
-        <div
-          class="bg-gradient-to-r from-purple-100 to-purple-200 p-4 rounded shadow"
-        >
-          <h2 class="text-xl font-semibold mb-4">
-            Total Users Bought Policies
-          </h2>
-          <p class="text-3xl font-bold">100</p>
-          <!-- Replace with actual number -->
-        </div>
 
         <!-- Total Users on Application Section -->
         <div
           class="bg-gradient-to-r from-yellow-100 to-yellow-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Total Users on Application</h2>
-          <p class="text-3xl font-bold">500</p>
+          <p class="text-3xl font-bold">{{ users.length }}</p>
           <!-- Replace with actual number -->
         </div>
 
@@ -89,86 +70,8 @@
           class="bg-gradient-to-r from-zinc-100 to-zinc-200 p-4 rounded shadow"
         >
           <h2 class="text-xl font-semibold mb-4">Total Claimed Policies</h2>
-          <p class="text-3xl font-bold">30</p>
+          <p class="text-3xl font-bold">{{ claimedPolicies.length }}</p>
           <!-- Replace with actual number -->
-        </div>
-
-        <!-- Buying Percentage Section -->
-        <div
-          class="bg-gradient-to-r from-green-100 to-green-200 p-4 rounded shadow"
-        >
-          <h2 class="text-xl font-semibold mb-4">Buying Percentage</h2>
-          <p class="text-3xl font-bold">20%</p>
-          <!-- Replace with actual percentage -->
-        </div>
-
-        <!-- Claim Percentage Section -->
-        <div
-          class="bg-gradient-to-r from-blue-100 to-blue-200 p-4 rounded shadow"
-        >
-          <h2 class="text-xl font-semibold mb-4">Claim Percentage</h2>
-          <p class="text-3xl font-bold">10%</p>
-          <!-- Replace with actual percentage -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Top Users Section -->
-    <section class="mt-10 p-4 rounded-lg shadow-lg bg-gray-100">
-      <div>
-        <h1 class="text-3xl font-bold text-pink-500">Top Users</h1>
-      </div>
-
-      <div class="grid grid-cols-3 gap-4 mt-5">
-        <!-- User 2 -->
-        <div
-          class="bg-gradient-to-l from-orange-300 to-orange-400 p-4 rounded-lg shadow-md text-white"
-        >
-          <div class="flex items-center">
-            <img
-              src="https://placekitten.com/500/500"
-              alt="User 2"
-              class="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <p class="font-semibold text-white">Jane Smith</p>
-              <p class="text-gray-300">User ID: 67890</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- User 3 -->
-        <div
-          class="bg-gradient-to-l from-orange-300 to-orange-400 p-4 rounded-lg shadow-md text-white"
-        >
-          <div class="flex items-center">
-            <img
-              src="https://placekitten.com/500/500"
-              alt="User 3"
-              class="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <p class="font-semibold text-white">Bob Johnson</p>
-              <p class="text-gray-300">User ID: 54321</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- User 4 -->
-        <div
-          class="bg-gradient-to-l from-orange-300 to-orange-400 p-4 rounded-lg shadow-md text-white"
-        >
-          <div class="flex items-center">
-            <img
-              src="https://placekitten.com/500/500"
-              alt="User 4"
-              class="w-12 h-12 rounded-full mr-4"
-            />
-            <div>
-              <p class="font-semibold text-white">Alice Williams</p>
-              <p class="text-gray-300">User ID: 98765</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

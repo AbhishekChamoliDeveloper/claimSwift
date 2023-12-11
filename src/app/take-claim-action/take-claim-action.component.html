@@ -13,31 +13,19 @@
 
       <div class="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 class="text-2xl font-bold mb-4 text-pink-600">
-          Comprehensive Health Coverage
+          {{ claim.policyId.coverage_type }}
         </h2>
         <p class="text-gray-800 mb-4 text-xl">
-          Get complete coverage for all your medical needs with our
-          Comprehensive Health Insurance policy.
+          {{ claim.policyId.information }}
         </p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="bg-pink-500 text-white px-2 py-1 rounded"
-            >Hospitalization</span
-          >
-          <span class="bg-pink-500 text-white px-2 py-1 rounded"
-            >Prescription Drugs</span
-          >
-          <span class="bg-pink-500 text-white px-2 py-1 rounded"
-            >Preventive Care</span
-          >
-        </div>
         <div class="grid grid-cols-2 gap-2 text-2xl mt-5">
           <div>
             <strong class="text-pink-600">Deductible:</strong>
-            <p class="text-gray-800">$500</p>
+            <p class="text-gray-800">{{ claim.policyId.deductible }}</p>
           </div>
           <div>
             <strong class="text-pink-600">Premium:</strong>
-            <p class="text-gray-800">$150/Month</p>
+            <p class="text-gray-800">{{ claim.policyId.premium }}/Month</p>
           </div>
         </div>
       </div>
@@ -47,103 +35,108 @@
           <label for="fullName" class="block text-xl font-medium text-gray-700">
             Full Name
           </label>
-          <p class="text-gray-800">John Doe</p>
+          <p class="text-gray-800">{{ claim.fullName }}</p>
         </div>
 
         <div class="mb-4">
           <label for="email" class="block text-xl font-medium text-gray-700">
             Email Address
           </label>
-          <p class="text-gray-800">john.doeexample.com</p>
+          <p class="text-gray-800">{{ claim.email }}</p>
         </div>
 
         <div class="mb-4">
           <label for="phone" class="block text-xl font-medium text-gray-700">
             Phone Number
           </label>
-          <p class="text-gray-800">(555) 123-4567</p>
+          <p class="text-gray-800">{{ claim.phoneNumber }}</p>
         </div>
 
         <div class="mb-4">
           <label for="address" class="block text-xl font-medium text-gray-700">
             Address
           </label>
-          <p class="text-gray-800">123 Main St, Anytown, USA</p>
+          <p class="text-gray-800">{{ claim.address }}</p>
         </div>
 
         <div class="mb-4">
           <label for="dob" class="block text-xl font-medium text-gray-700">
             Date of Birth
           </label>
-          <p class="text-gray-800">1985-05-20</p>
+          <p class="text-gray-800">{{ formatDate(claim.dateOfBirth) }}</p>
         </div>
 
         <div class="mb-4">
           <label for="ssn" class="block text-xl font-medium text-gray-700">
-            Social Security Number
+            Date and Time Of Incident
           </label>
-          <p class="text-gray-800">XXX-XX-XXXX</p>
+          <p class="text-gray-800">
+            {{ formatDate(claim.dateTimeOfIncident) }}
+          </p>
         </div>
 
         <div class="mb-4">
-          <label for="gender" class="block text-xl font-medium text-gray-700">
-            Gender
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Location Of Incident
           </label>
-          <p class="text-gray-800">Male</p>
+          <p class="text-gray-800">{{ claim.locationOfIncident }}</p>
         </div>
 
         <div class="mb-4">
-          <label
-            for="maritalStatus"
-            class="block text-xl font-medium text-gray-700"
-          >
-            Marital Status
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Police Report Number
           </label>
-          <p class="text-gray-800">Married</p>
+          <p class="text-gray-800">{{ claim.policeReportNumber }}</p>
         </div>
 
         <div class="mb-4">
-          <label
-            for="occupation"
-            class="block text-xl font-medium text-gray-700"
-          >
-            Occupation
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Witness Information
           </label>
-          <p class="text-gray-800">Software Developer</p>
+          <p class="text-gray-800">{{ claim.witnessInformation }}</p>
         </div>
 
         <div class="mb-4">
-          <label
-            for="annualIncome"
-            class="block text-xl font-medium text-gray-700"
-          >
-            Annual Income
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Other Party Information
           </label>
-          <p class="text-gray-800">$80,000</p>
+          <p class="text-gray-800">{{ claim.otherPartyInformation }}</p>
         </div>
 
         <div class="mb-4">
-          <label
-            for="healthConditions"
-            class="block text-xl font-medium text-gray-700"
-          >
-            Health Conditions
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Photo and Video Link
           </label>
-          <p class="text-gray-800">None</p>
+          <a class="text-gray-800">{{ claim.photoOrVideoLink }}</a>
         </div>
 
         <div class="mb-4">
-          <label
-            for="documentUpload"
-            class="block text-xl font-medium text-gray-700"
-          >
-            Document Upload
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Supporting Document
           </label>
-          <p class="text-gray-800">insurance_document.pdf</p>
+          <a>{{ claim.supportingDocument }}</a>
+        </div>
+
+        <div class="mb-4">
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Bank Account Detail
+          </label>
+          <a class="text-gray-800">{{ claim.bankAccountDetail }}</a>
+        </div>
+
+        <div class="mb-4">
+          <label for="ssn" class="block text-xl font-medium text-gray-700">
+            Signature
+          </label>
+          <a class="text-gray-800">{{ claim.signature }}</a>
         </div>
 
         <div class="flex items-center space-x-6">
-          <button type="submit" class="bg-green-500 text-white p-2 rounded-md">
+          <button
+            type="submit"
+            class="bg-green-500 text-white p-2 rounded-md"
+            (click)="approveClaim(claim._id)"
+          >
             Approve Claim
           </button>
           <button
@@ -177,7 +170,7 @@
               <button
                 type="button"
                 class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-300 ease-in-out"
-                (click)="rejectClaim()"
+                (click)="rejectClaim(claim._id)"
               >
                 Reject
               </button>

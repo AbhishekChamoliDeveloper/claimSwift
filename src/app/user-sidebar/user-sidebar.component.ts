@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service.ts.service'; // Replace with the actual path
 import { NotificationCountService } from '../services/notification-count.service'; // Replace with the actual path
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -14,7 +15,8 @@ export class UserSidebarComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private notificationCountService: NotificationCountService
+    private notificationCountService: NotificationCountService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class UserSidebarComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigateByUrl('/');
+    this.cookieService.deleteAll('authToken');
+    this.router.navigateByUrl('/admin-login');
   }
 }

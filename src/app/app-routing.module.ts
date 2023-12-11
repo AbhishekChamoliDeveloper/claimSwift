@@ -66,7 +66,7 @@ const routes: Routes = [
     component: AdminRejectedPoliciesComponent,
   },
   {
-    path: 'dashboard/admin/claim-review/:policyId',
+    path: 'dashboard/admin/claim-review/:claimId',
     component: TakeClaimActionComponent,
   },
 ];

@@ -3,13 +3,13 @@
 
   <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
     <!-- Search Input -->
-    <div class="mb-6">
+    <!-- <div class="mb-6">
       <input
         type="text"
         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
         placeholder="Search Policies"
       />
-    </div>
+    </div> -->
 
     <!-- Flatlist of Submitted Policies -->
     <div
@@ -32,7 +32,7 @@
         </div>
       </div>
       <a
-        [routerLink]="'/dashboard/admin/claim-review/' + policy.policyId._id"
+        [routerLink]="'/dashboard/admin/claim-review/' + policy._id"
         class="bg-rose-900 text-white px-4 py-2 rounded-md hover:bg-rose-700 focus:outline-none text-center"
       >
         Take Action

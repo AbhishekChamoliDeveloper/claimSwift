@@ -3,13 +3,13 @@
 
   <main class="w-full p-8 bg-gray-100 max-h-screen overflow-y-scroll">
     <!-- Search Input for Users -->
-    <div class="mb-6">
+    <!-- <div class="mb-6">
       <input
         type="text"
         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500"
         placeholder="Search Users"
       />
-    </div>
+    </div> -->
 
     <!-- Flatlist of Users -->
     <div
@@ -19,32 +19,31 @@
       <div class="flex items-center">
         <!-- User Image -->
         <img
-          src="{{ user.photoUrl }}"
-          alt="{{ user.fullName }}"
+          src="{{ user.profile_picture }}"
+          alt="{{ user.firstName }} {{ user.lastName }}"
           class="w-16 h-16 rounded-full object-cover mr-4"
         />
 
         <!-- User Details -->
         <div>
-          <h2 class="text-xl font-semibold">{{ user.fullName }}</h2>
-          <p class="text-gray-600">User ID: {{ user.userId }}</p>
+          <h2 class="text-xl font-semibold">
+            {{ user.firstName }} {{ user.lastName }}
+          </h2>
+          <p class="text-gray-600">User ID: {{ user._Id }}</p>
           <p class="text-gray-600">Email: {{ user.email }}</p>
-          <p class="text-gray-600">Phone: {{ user.phoneNumber }}</p>
+          <p class="text-gray-600">Phone: {{ user.mobileNumber }}</p>
           <p class="text-gray-600">
-            Joining Date: {{ user.dateOfJoining | date }}
+            Joining Date: {{ formatDate(user.createdAt) }}
           </p>
         </div>
 
         <!-- Policies Information -->
         <div class="ml-auto text-right">
           <p class="text-gray-600 mb-2">
-            Policies Bought: {{ user.policiesBought }}
+            Policies Bought: {{ user.boughtPolicies.length }}
           </p>
           <p class="text-gray-600 mb-2">
-            Policies Claimed: {{ user.policiesClaimed }}
-          </p>
-          <p class="text-gray-600 mb-2">
-            Policies Rejected: {{ user.policiesRejected }}
+            Policies Claimed: {{ user.claimedPolicies.length }}
           </p>
         </div>
       </div>
