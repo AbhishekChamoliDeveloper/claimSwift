@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class TakeClaimActionComponent {
   showRejectPopup = false;
   rejectionReason = '';
+  selectedPolicy;
 
   rejectClaim() {
     console.log('Claim rejected with reason:', this.rejectionReason);

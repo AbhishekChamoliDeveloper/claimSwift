@@ -18,12 +18,12 @@
     >
       <div class="flex mb-4 items-center justify-between">
         <div>
-          <h2 class="text-xl font-semibold mb-2">{{ policy.policyName }}</h2>
+          <h2 class="text-xl font-semibold mb-2">
+            {{ policy.policyId.coverage_type }}
+          </h2>
+          <p class="text-gray-600 mb-2">Policy Id: {{ policy.policyId._id }}</p>
           <p class="text-gray-600 mb-2">
-            Policy Number: {{ policy.policyNumber }}
-          </p>
-          <p class="text-gray-600 mb-2">
-            Submission Date: {{ policy.submissionDate | date }}
+            Submission Date: {{ formatDate(policy.submittedDate) }}
           </p>
         </div>
         <div class="text-right">
@@ -32,7 +32,7 @@
         </div>
       </div>
       <a
-        routerLink="/dashboard/admin/claim-review/1234/4567"
+        [routerLink]="'/dashboard/admin/claim-review/' + policy.policyId._id"
         class="bg-rose-900 text-white px-4 py-2 rounded-md hover:bg-rose-700 focus:outline-none text-center"
       >
         Take Action

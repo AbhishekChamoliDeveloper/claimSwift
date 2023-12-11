@@ -9,13 +9,15 @@
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center">
           <img
-            src="https://media.licdn.com/dms/image/C4E03AQGx3lUk_NsLBg/profile-displayphoto-shrink_200_200/0/1637922686282?e=2147483647&v=beta&t=7he4IKKjRHtSnKkKHs23Hdn5p_WtPLDPjcnU30QxDgk"
+            src="{{ userData.profile_picture }}"
             alt="User Profile"
             class="w-24 h-24 rounded-full mr-5"
           />
           <div class="text-gray-500">
             <p class="text-5xl font-semibold text-pink-400">Welcome back,</p>
-            <p class="text-2xl font-bold mt-2">Palak Khurana</p>
+            <p class="text-2xl font-bold mt-2">
+              {{ userData.firstName }} {{ userData.lastName }}
+            </p>
           </div>
         </div>
 
@@ -37,7 +39,7 @@
                 />
               </svg>
 
-              <p class="text-lg">{{ userEmail }}</p>
+              <p class="text-lg">{{ userData.email }}</p>
             </div>
             <div class="flex items-center justify-start space-x-2 mt-2">
               <svg
@@ -55,7 +57,7 @@
                 />
               </svg>
 
-              <p class="text-lg">+91-7355300243</p>
+              <p class="text-lg">{{ userData.mobileNumber }}</p>
             </div>
           </div>
         </div>
@@ -66,114 +68,73 @@
       <!-- Column 1: Purchased Policy -->
       <div class="bg-zinc-200 shadow-lg text-gray-800 p-4 rounded-lg">
         <h3 class="text-lg font-semibold mb-2">Purchased Policies</h3>
-        <p class="text-3xl font-bold">123</p>
+        <p class="text-3xl font-bold">{{ userData.boughtPolicies.length }}</p>
       </div>
 
       <!-- Column 2: Claimed Policy -->
       <div class="bg-pink-200 shadow-lg text-gray-800 p-4 rounded-lg">
         <h3 class="text-lg font-semibold mb-2">Claimed Policies</h3>
-        <p class="text-3xl font-bold">45</p>
+        <p class="text-3xl font-bold">{{ userData.claimedPolicies.length }}</p>
       </div>
 
       <!-- Column 3: Approved Claims -->
       <div class="bg-zinc-200 shadow-lg text-gray-800 p-4 rounded-lg">
         <h3 class="text-lg font-semibold mb-2">Approved Claims</h3>
-        <p class="text-3xl font-bold">78</p>
+        <p class="text-3xl font-bold">{{ approvedPolicies.length }}</p>
       </div>
 
       <!-- Column 4: Denied Claim -->
       <div class="bg-pink-200 shadow-lg text-gray-800 p-4 rounded-lg">
         <h3 class="text-lg font-semibold mb-2">Denied Claims</h3>
-        <p class="text-3xl font-bold">40</p>
+        <p class="text-3xl font-bold">{{ rejectedPolicies.length }}</p>
       </div>
     </section>
 
-    <section class="mt-10 shadow-lg p-4 rounded-md bg-slate-50">
-      <h2 class="text-2xl font-bold text-pink-500 mb-4">
-        Health Insurance Claim Status
+    <section class="mt-10 shadow-lg p-4 rounded-md bg-gray-100">
+      <h2 class="text-3xl font-bold text-yellow-600 mb-6">
+        Pending Health Insurance Claims
       </h2>
-
-      <!-- Policy Banner 1: Pending -->
       <div
-        class="flex items-center shadow-lg p-4 mb-4 rounded-lg bg-gradient-to-r from-yellow-100 to-yellow-50"
+        *ngFor="let claim of pendingPolicies"
+        class="flex items-center shadow-lg p-6 mb-6 rounded-lg"
+        [ngClass]="{
+          'bg-gradient-to-r from-yellow-100 to-yellow-50': true
+        }"
       >
         <div class="flex-1">
-          <h3 class="text-lg font-semibold">HealthGuard Plus</h3>
-          <p class="text-gray-800">Policy ID: HIP2023001</p>
+          <h3 class="text-xl font-semibold text-gray-800">
+            {{ claim.policyId.coverage_type }}
+          </h3>
+          <p class="text-gray-600">Policy ID: {{ claim.policyId._id }}</p>
+          <p class="text-gray-600">
+            Submission Date: {{ formatLocalDate(claim.submittedDate) }}
+          </p>
         </div>
         <div
-          class="ml-4 text-white px-4 py-2 rounded-xl bg-yellow-500 w-[8rem] text-center"
+          class="ml-4 text-white px-6 py-3 rounded-xl bg-yellow-500 text-center"
         >
-          Pending
+          <span class="font-semibold">Pending</span>
         </div>
       </div>
-
-      <!-- Policy Banner 2: Approved -->
-      <div
-        class="flex items-center shadow-lg p-4 mb-4 rounded-lg bg-white bg-gradient-to-r from-green-100 to-green-50"
-      >
-        <div class="flex-1">
-          <h3 class="text-lg font-semibold">Wellness Assurance</h3>
-          <p class="text-gray-800">Policy ID: HIP2023002</p>
-        </div>
-        <div
-          class="ml-4 text-white px-4 py-2 rounded-xl bg-green-500 w-[8rem] text-center"
-        >
-          Approved
-        </div>
-      </div>
-
-      <!-- Policy Banner 3: Rejected -->
-      <div
-        class="flex items-center shadow-lg p-4 mb-4 rounded-lg bg-white bg-gradient-to-r from-red-100 to-red-50"
-      >
-        <div class="flex-1">
-          <h3 class="text-lg font-semibold">Family Care Shield</h3>
-          <p class="text-gray-800">Policy ID: HIP2023003</p>
-        </div>
-        <div
-          class="ml-4 text-white px-4 py-2 rounded-xl bg-red-500 w-[8rem] text-center"
-        >
-          Rejected
-        </div>
-      </div>
-
-      <!-- Add more policy banners as needed -->
     </section>
 
     <section class="mt-10 shadow-lg p-4 rounded-md bg-gray-100">
       <h2 class="text-3xl font-bold text-green-600 mb-6">
         Approved Health Insurance Policies
       </h2>
-
-      <!-- Approved Policy Banner 1 -->
       <div
-        class="flex items-center shadow-lg p-6 mb-6 rounded-lg bg-gradient-to-r from-green-100 to-green-50"
+        *ngFor="let policy of approvedPolicies"
+        class="flex items-center shadow-lg p-6 mb-6 rounded-lg"
+        [ngClass]="{
+          'bg-gradient-to-r from-green-100 to-green-50': true
+        }"
       >
         <div class="flex-1">
           <h3 class="text-xl font-semibold text-gray-800">
-            Wellness Assurance
+            {{ policy.policyId.coverage_type }}
           </h3>
-          <p class="text-gray-600">Policy ID: HIP2023002</p>
-          <p class="text-gray-600">Approved Date: January 15, 2023</p>
-        </div>
-        <div
-          class="ml-4 text-white px-6 py-3 rounded-xl bg-green-500 text-center"
-        >
-          <span class="font-semibold">Approved</span>
-        </div>
-      </div>
-
-      <!-- Approved Policy Banner 2 (Add more as needed) -->
-      <div
-        class="flex items-center shadow-lg p-6 mb-6 rounded-lg bg-gradient-to-r from-green-100 to-green-50"
-      >
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-800">
-            Secure Health Plus
-          </h3>
-          <p class="text-gray-600">Policy ID: HIP2023005</p>
-          <p class="text-gray-600">Approved Date: February 5, 2023</p>
+          <p class="text-gray-600">Policy ID: {{ policy.policyId._id }}</p>
+          <!-- <p class="text-gray-600">Approved Date: {{ policy.approvedDate }}</p> -->
         </div>
         <div
           class="ml-4 text-white px-6 py-3 rounded-xl bg-green-500 text-center"
@@ -187,64 +148,24 @@
       <h2 class="text-3xl font-bold text-red-600 mb-6">
         Rejected Health Insurance Claims
       </h2>
-
-      <!-- Rejected Claim Banner 1 -->
       <div
-        class="flex items-center shadow-lg p-6 mb-6 rounded-lg bg-gradient-to-r from-red-100 to-red-50"
+        *ngFor="let claim of rejectedPolicies"
+        class="flex items-center shadow-lg p-6 mb-6 rounded-lg"
+        [ngClass]="{
+          'bg-gradient-to-r from-red-100 to-red-50': true
+        }"
       >
         <div class="flex-1">
           <h3 class="text-xl font-semibold text-gray-800">
-            Family Care Shield
+            {{ claim.policyId.coverage_type }}
           </h3>
-          <p class="text-gray-600">Policy ID: HIP2023003</p>
-          <p class="text-gray-600">Rejected Date: January 20, 2023</p>
+          <p class="text-gray-600">Policy ID: {{ claim.policyId._id }}</p>
+          <!-- <p class="text-gray-600">Rejected Date: {{ claim.rejectedDate }}</p> -->
         </div>
         <div
           class="ml-4 text-white px-6 py-3 rounded-xl bg-red-500 text-center"
         >
           <span class="font-semibold">Rejected</span>
-        </div>
-      </div>
-
-      <!-- Rejected Claim Banner 2 (Add more as needed) -->
-      <div
-        class="flex items-center shadow-lg p-6 mb-6 rounded-lg bg-gradient-to-r from-red-100 to-red-50"
-      >
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-800">HealthGuard Plus</h3>
-          <p class="text-gray-600">Policy ID: HIP2023001</p>
-          <p class="text-gray-600">Rejected Date: February 8, 2023</p>
-        </div>
-        <div
-          class="ml-4 text-white px-6 py-3 rounded-xl bg-red-500 text-center"
-        >
-          <span class="font-semibold">Rejected</span>
-        </div>
-      </div>
-
-      <!-- Add more rejected claim banners as needed -->
-    </section>
-
-    <section class="mt-10 shadow-lg p-4 rounded-md bg-gray-100">
-      <h2 class="text-3xl font-bold text-yellow-600 mb-6">
-        Pending Health Insurance Claims
-      </h2>
-
-      <!-- Pending Claim Banner -->
-      <div
-        class="flex items-center shadow-lg p-6 mb-6 rounded-lg bg-gradient-to-r from-yellow-100 to-yellow-50"
-      >
-        <div class="flex-1">
-          <h3 class="text-xl font-semibold text-gray-800">
-            Future Wellness Plan
-          </h3>
-          <p class="text-gray-600">Policy ID: HIP2023010</p>
-          <p class="text-gray-600">Submission Date: March 5, 2023</p>
-        </div>
-        <div
-          class="ml-4 text-white px-6 py-3 rounded-xl bg-yellow-500 text-center"
-        >
-          <span class="font-semibold">Pending</span>
         </div>
       </div>
     </section>

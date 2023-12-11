@@ -34,7 +34,7 @@
       </div>
 
       <!-- Insurance Claim Form -->
-      <form class="flex-grow">
+      <form class="flex-grow" (ngSubmit)="onSubmit($event)">
         <!-- Personal Information -->
         <div class="mb-4">
           <label for="fullName" class="block text-sm font-medium text-gray-700"
@@ -45,7 +45,7 @@
             id="fullName"
             name="fullName"
             class="mt-1 p-2 w-full border rounded-md"
-            required
+            [(ngModel)]="formData.fullName"
           />
         </div>
 
@@ -58,21 +58,23 @@
             id="email"
             name="email"
             class="mt-1 p-2 w-full border rounded-md"
-            required
+            [(ngModel)]="formData.email"
           />
         </div>
 
         <div class="mb-4">
-          <label for="phone" class="block text-sm font-medium text-gray-700"
+          <label
+            for="phoneNumber"
+            class="block text-sm font-medium text-gray-700"
             >Phone Number</label
           >
           <input
             type="tel"
-            id="phone"
-            name="phone"
+            id="phoneNumber"
+            name="phoneNumber"
             class="mt-1 p-2 w-full border rounded-md"
             placeholder="e.g., (555) 555-5555"
-            required
+            [(ngModel)]="formData.phoneNumber"
           />
         </div>
 
@@ -85,86 +87,56 @@
             name="address"
             class="mt-1 p-2 w-full border rounded-md"
             rows="3"
-            required
+            [(ngModel)]="formData.address"
           ></textarea>
         </div>
 
         <div class="mb-4">
-          <label for="dob" class="block text-sm font-medium text-gray-700"
+          <label
+            for="dateOfBirth"
+            class="block text-sm font-medium text-gray-700"
             >Date of Birth</label
           >
           <input
             type="date"
-            id="dob"
-            name="dob"
+            id="dateOfBirth"
+            name="dateOfBirth"
             class="mt-1 p-2 w-full border rounded-md"
-            required
-          />
-        </div>
-
-        <!-- Policy Information -->
-        <div class="mb-4">
-          <label
-            for="policyNumber"
-            class="block text-sm font-medium text-gray-700"
-            >Policy Number</label
-          >
-          <input
-            type="text"
-            id="policyNumber"
-            name="policyNumber"
-            class="mt-1 p-2 w-full border rounded-md"
-            required
+            [(ngModel)]="formData.dateOfBirth"
           />
         </div>
 
         <!-- Incident/Claim Details -->
         <div class="mb-4">
           <label
-            for="incidentDateTime"
+            for="dateTimeOfIncident"
             class="block text-sm font-medium text-gray-700"
             >Date and Time of the Incident</label
           >
           <input
             type="datetime-local"
-            id="incidentDateTime"
-            name="incidentDateTime"
+            id="dateTimeOfIncident"
+            name="dateTimeOfIncident"
             class="mt-1 p-2 w-full border rounded-md"
-            required
+            [(ngModel)]="formData.dateTimeOfIncident"
           />
         </div>
 
         <div class="mb-4">
           <label
-            for="incidentDescription"
-            class="block text-sm font-medium text-gray-700"
-            >Description of the Incident</label
-          >
-          <textarea
-            id="incidentDescription"
-            name="incidentDescription"
-            class="mt-1 p-2 w-full border rounded-md"
-            rows="3"
-            required
-          ></textarea>
-        </div>
-
-        <div class="mb-4">
-          <label
-            for="incidentLocation"
+            for="locationOfIncident"
             class="block text-sm font-medium text-gray-700"
             >Location of the Incident</label
           >
           <input
             type="text"
-            id="incidentLocation"
-            name="incidentLocation"
+            id="locationOfIncident"
+            name="locationOfIncident"
             class="mt-1 p-2 w-full border rounded-md"
-            required
+            [(ngModel)]="formData.locationOfIncident"
           />
         </div>
 
-        <!-- Additional Information -->
         <div class="mb-4">
           <label
             for="policeReportNumber"
@@ -176,6 +148,7 @@
             id="policeReportNumber"
             name="policeReportNumber"
             class="mt-1 p-2 w-full border rounded-md"
+            [(ngModel)]="formData.policeReportNumber"
           />
         </div>
 
@@ -190,6 +163,7 @@
             name="witnessInformation"
             class="mt-1 p-2 w-full border rounded-md"
             rows="3"
+            [(ngModel)]="formData.witnessInformation"
           ></textarea>
         </div>
 
@@ -204,66 +178,67 @@
             name="otherPartyInformation"
             class="mt-1 p-2 w-full border rounded-md"
             rows="3"
+            [(ngModel)]="formData.otherPartyInformation"
           ></textarea>
         </div>
 
-        <!-- Documentation -->
         <div class="mb-4">
           <label
-            for="photosVideos"
+            for="photoOrVideoLink"
             class="block text-sm font-medium text-gray-700"
-            >Photos or Videos of the Incident</label
+            >Photo or Video Link</label
           >
           <input
             type="file"
-            id="photosVideos"
-            name="photosVideos"
-            class="mt-1"
+            id="photoOrVideoLink"
+            name="photoOrVideoLink"
+            class="mt-1 p-2 w-full border rounded-md"
+            (change)="uploadPhoto($event)"
+            [(ngModel)]="formData.photoOrVideoLink"
           />
         </div>
 
         <div class="mb-4">
           <label
-            for="supportingDocuments"
+            for="supportingDocument"
             class="block text-sm font-medium text-gray-700"
-            >Supporting Documents (medical reports, repair estimates,
-            etc.)</label
+            >Supporting Document</label
           >
           <input
             type="file"
-            id="supportingDocuments"
-            name="supportingDocuments"
-            class="mt-1"
+            id="supportingDocument"
+            name="supportingDocument"
+            class="mt-1 p-2 w-full border rounded-md"
+            (change)="uploadSupportingDocument($event)"
+            [(ngModel)]="formData.supportingDocument"
           />
         </div>
 
-        <!-- Financial Information -->
         <div class="mb-4">
           <label
-            for="bankAccountDetails"
+            for="bankAccountDetail"
             class="block text-sm font-medium text-gray-700"
-            >Bank Account Details for Claim Payment (if applicable)</label
+            >Bank Account Detail for Claim Payment (if applicable)</label
           >
           <input
             type="text"
-            id="bankAccountDetails"
-            name="bankAccountDetails"
+            id="bankAccountDetail"
+            name="bankAccountDetail"
             class="mt-1 p-2 w-full border rounded-md"
+            [(ngModel)]="formData.bankAccountDetail"
           />
         </div>
 
-        <!-- Signature -->
         <div class="mb-4">
-          <label
-            for="claimantSignature"
-            class="block text-sm font-medium text-gray-700"
+          <label for="signature" class="block text-sm font-medium text-gray-700"
             >Signature of the Claimant</label
           >
           <input
             type="text"
-            id="claimantSignature"
-            name="claimantSignature"
+            id="signature"
+            name="signature"
             class="mt-1 p-2 w-full border rounded-md"
+            [(ngModel)]="formData.signature"
             required
           />
         </div>

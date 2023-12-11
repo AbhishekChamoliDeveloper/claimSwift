@@ -113,7 +113,16 @@
         [disabled]="loginForm.invalid"
         class="bg-pink-500 text-white px-4 py-2 rounded-md w-full mt-4"
       >
-        Login
+        <ng-container *ngIf="!isLoggingIn; else loadingTemplate">
+          Log In
+        </ng-container>
+        <ng-template #loadingTemplate>
+          <div class="flex items-center justify-center">
+            <div
+              class="animate-spin rounded-full border-t-4 border-pink-300 border-opacity-25 border-solid h-6 w-6"
+            ></div>
+          </div>
+        </ng-template>
       </button>
     </form>
 

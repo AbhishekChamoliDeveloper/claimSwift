@@ -17,7 +17,11 @@ export class NotificationCountService {
       const poll = () => {
         this.userService.getUser().subscribe(
           (user) => {
-            const notificationCount = user?.notifications?.length || 0;
+            const unreadNotifications =
+              user?.notifications.filter(
+                (notification) => !notification.isRead
+              ) || [];
+            const notificationCount = unreadNotifications.length;
             observer.next(notificationCount);
             setTimeout(poll, this.pollInterval);
           },

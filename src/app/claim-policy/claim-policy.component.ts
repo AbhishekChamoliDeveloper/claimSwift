@@ -1,32 +1,107 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HealthInsurancePolicy } from '../../interfaces/health-insurance-policy.interface';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-claim-policy',
   templateUrl: './claim-policy.component.html',
 })
 export class ClaimPolicyComponent implements OnInit {
-  selectedPolicy: HealthInsurancePolicy;
+  selectedPolicy: any;
+  formData: any = {};
+
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private router: Router,
+    private toastService: ToastrService
+  ) {}
 
   ngOnInit() {
-    this.selectedPolicy = this.getSelectedPolicy();
+    const policyId = this.route.snapshot.paramMap.get('policyId');
+
+    this.http.get(`http://localhost:3000/policy/${policyId}`).subscribe(
+      (response: any) => {
+        this.selectedPolicy = response.policy;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
-  getSelectedPolicy(): HealthInsurancePolicy {
-    return {
-      coverage_type: 'Individual',
-      policy_number: 'HP01',
-      image:
-        'https://media.istockphoto.com/id/1405265698/photo/portrait-of-mid-adult-man-outdoors.webp?b=1&s=170667a&w=0&k=20&c=x6gzntsYtfbet9ZTpJaAw25r2POL7J4e_WGxLXJNT7E=',
-      information: 'Comprehensive health coverage for individuals.',
-      benefits: [
-        'Hospitalization coverage',
-        'Prescription drug coverage',
-        'Preventive care',
-      ],
-      deductible: '$1,000',
-      premium: '$150',
-    };
+  uploadPhoto(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const cloudinaryUploadUrl =
+        'https://api.cloudinary.com/v1_1/dmkpqiqea/raw/upload';
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'vgrttoyr');
+      formData.append('api_key', '319926924341192');
+
+      this.http.post(cloudinaryUploadUrl, formData).subscribe(
+        (cloudinaryResponse: any) => {
+          console.log(cloudinaryResponse.url);
+          this.formData.photoOrVideoLink = cloudinaryResponse.url;
+        },
+        (uploadError) => {
+          console.error(uploadError);
+        }
+      );
+    }
+  }
+
+  uploadSupportingDocument(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      const cloudinaryUploadUrl =
+        'https://api.cloudinary.com/v1_1/dmkpqiqea/raw/upload';
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'vgrttoyr');
+      formData.append('api_key', '319926924341192');
+
+      this.http.post(cloudinaryUploadUrl, formData).subscribe(
+        (cloudinaryResponse: any) => {
+          console.log(cloudinaryResponse.url);
+          this.formData.supportingDocument = cloudinaryResponse.url;
+        },
+        (uploadError) => {
+          console.error(uploadError);
+        }
+      );
+    }
+  }
+
+  onSubmit(e: Event) {
+    const authToken = this.cookieService.get('authToken');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    });
+
+    this.http
+      .post(
+        `http://localhost:3000/user/claim-policy/${this.selectedPolicy._id}`,
+        this.formData,
+        { headers: headers }
+      )
+      .subscribe(
+        (response: any) => {
+          this.toastService.success(
+            `Congratulation, You Policy Id ${this.selectedPolicy._id}. Your claim Id is ${response._id}.`
+          );
+          this.router.navigate(['/dashboard/available-policies']);
+        },
+        (error) => {
+          console.log(error);
+          alert(error.error);
+        }
+      );
   }
 }

@@ -38,7 +38,7 @@ const routes: Routes = [
     component: PurchasedPoliciesComponent,
   },
   {
-    path: 'claim-policy/:id',
+    path: 'claim-policy/:policyId',
     component: ClaimPolicyComponent,
   },
   {
@@ -66,7 +66,7 @@ const routes: Routes = [
     component: AdminRejectedPoliciesComponent,
   },
   {
-    path: 'dashboard/admin/claim-review/:userId/:policyNumber',
+    path: 'dashboard/admin/claim-review/:policyId',
     component: TakeClaimActionComponent,
   },
 ];

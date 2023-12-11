@@ -17,6 +17,8 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     const authToken = this.cookieService.get('authToken');
 
+    this.markAllNotificationsAsRead(authToken);
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken}`,
@@ -35,6 +37,28 @@ export class NotificationsComponent implements OnInit {
         },
         (error) => {
           console.error('Error fetching notifications:', error);
+        }
+      );
+  }
+
+  private markAllNotificationsAsRead(authToken: string): void {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken}`,
+    });
+
+    this.httpClient
+      .post<any>(
+        'http://localhost:3000/user/mark-all-notifications-as-read',
+        {},
+        { headers }
+      )
+      .subscribe(
+        (response) => {
+          console.log('All notifications marked as read:', response);
+        },
+        (error) => {
+          console.error('Error marking all notifications as read:', error);
         }
       );
   }
